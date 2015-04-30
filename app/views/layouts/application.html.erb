@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WEFCwebsite</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= render partial: "shared/meta" %>
 </head>
 <body>
 
+<%= render partial: "shared/admin" %>
+
+<%= render partial: "shared/navigation" %>
+
+<%= render partial: "shared/notifications" %>
+
 <%= yield %>
+
+<%= render partial: "shared/footer" %>
 
 </body>
 </html>
