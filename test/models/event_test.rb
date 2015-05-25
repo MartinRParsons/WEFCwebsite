@@ -3,7 +3,7 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
   
   def setup
-    @event = Event.create(title: "test event", description: "this is a test event for testing validations", start: "2015-05-13 00:00:00", finish: "2015-05-14 00:00:00", venue: "WEFC")
+    @event = Event.new(title: "test event", description: "this is a test event for testing validations", start: "2015-05-13 00:00:00", finish: "2015-05-14 00:00:00", venue: "WEFC")
   end
   
   

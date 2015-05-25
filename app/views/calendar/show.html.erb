@@ -1,0 +1,64 @@
+  <h1>
+    <%
+    @start = @date -(@date.wday-1) -(if@date.wday ==0 then 7 else 0 end)
+    @finish = if @date.wday <= 5 then @start + 34 else @start + 41  end
+    @prev_month = Date::MONTHNAMES[@date.prev_month.month]
+    @prev_month_year = @date.prev_month.year
+    @next_month = Date::MONTHNAMES[@date.next_month.month]
+    @next_month_year = @date.next_month.year
+    %>
+    <!--
+    <%=@date.year %></br>
+    <%=@date.prev_month %></br>
+    <%=@date %></br>
+    <%=@date.next_month %></br>
+    <%=@start%></br>
+    <%=@finish%>
+    -->
+    WEFC Calendar
+  </h1>
+  
+  <div class="calendar">
+    <div class="cal-nav">
+      <div class="cal-month">
+        <%=link_to '<< '+@prev_month, calendar_month_year_path(:month => @prev_month.downcase, :year => @prev_month_year) if(Date.today.year-10..Date.today.year+30).to_a.include?(@prev_month_year) %>
+      </div>
+      <div class="cal-month">
+        <%=Date::MONTHNAMES[@date.month] +' ' + @date.year.to_s %>
+       </div>
+       <div class="cal-month">
+        <%=link_to @next_month+' >>', calendar_month_year_path(:month => @next_month.downcase, :year => @next_month_year) if(Date.today.year-10..Date.today.year+30).to_a.include?(@next_month_year) %>
+        </div>
+      </div>
+      
+      <div class="week">
+        <div class="weekdays">Monday</div>
+        <div class="weekdays">Tuesday</div>
+        <div class="weekdays">Wednesday</div>
+        <div class="weekdays">Thursday</div>
+        <div class="weekdays">Friday</div>
+        <div class="weekdays">Saturday</div>
+        <div class="weekdays">Sunday</div>
+      </div>
+        
+      <%
+        @start.upto(@finish) { |date| 
+      %>
+        <div class="day <%='current-month' if date.month==@date.month %> <%='last-week' if date > @finish-7%>">
+          <div class="day-label">
+            <p><%=date.day%> <%= link_to "new"%></p>
+          </div>
+            <ul class=day-events>
+            <li>
+              <%=date%>
+            </li>
+          </ul>
+        </div>
+      <%
+        }
+      %>
+  
+  
+        <br style="clear:both">
+    </div>
+  </div>

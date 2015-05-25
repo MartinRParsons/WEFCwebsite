@@ -4,16 +4,18 @@
     <%= render partial: "shared/meta" %>
 </head>
 <body>
-
-<%= render partial: "shared/admin" %>
-
-<%= render partial: "shared/navigation" %>
-
-<%= render partial: "shared/notifications" %>
-
-<%= yield %>
-
-<%= render partial: "shared/footer" %>
-
+<div class="website">
+  <%= render partial: "shared/admin" %>
+  
+  <%= render partial: "shared/navigation" %>
+  
+  <%= render partial: "shared/notifications" %>
+  
+  <div class="content">
+    <%= yield %>
+  </div>
+  
+  <%= render partial: "shared/footer" %>
+</div>
 </body>
 </html>
